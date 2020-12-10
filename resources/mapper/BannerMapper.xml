@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lv.dao.BannerDao">
+
+    <select id="findAllBanner" resultType="lbt">
+        SELECT * from t_lbt
+    </select>
+
+    <select id="findBannerById" parameterType="int" resultType="lbt">
+        SELECT * from t_lbt WHERE  l_id=#{l_id}
+    </select>
+
+    <insert id="insertOneBanner" parameterType="lbt">
+        INSERT into t_lbt(image,imgDesc,url) VALUES (#{image},#{imgDesc},#{url})
+    </insert>
+
+    <update id="updateOneBanner" parameterType="lbt">
+        update t_lbt set
+        <if test="image!=null and image!=''">
+            image = #{image},
+        </if>
+        imgDesc=#{imgDesc},url=#{url}
+        where l_id=#{l_id} ;
+    </update>
+
+
+</mapper>

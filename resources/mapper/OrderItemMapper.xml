@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<mapper namespace="com.lv.dao.OrderItemDao">
+<insert id="insertOneOrderItem" parameterType="orderItem">
+    INSERT into t_orderitem(p_id,u_id,count,o_id,total_fee,color,speci) VALUES (
+    #{p_id},#{u_id},#{count},#{o_id},#{total_fee},#{color},#{speci}
+    )
+
+
+</insert>
+</mapper>

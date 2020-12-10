@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.lv.dao.OrderDao">
+
+    <insert id="insertOneOrder" keyProperty="o_id" parameterType="order" useGeneratedKeys="true">
+
+    INSERT INTO t_order(phone,oStatus,createTime,u_id,address,money,payMethod) VALUES
+(
+#{phone},#{oStatus},#{createTime},#{u_id},#{address},#{money},#{payMethod}
+)
+</insert>
+
+    <select id="getAllOrderForPage" parameterType="int" resultType="order">
+        SELECT * from t_order
+        <if test="startIndex!=null">
+            limit #{startIndex},10;
+        </if>
+    </select>
+
+    <select id="getOrderItemByOid" parameterType="int" resultType="orderItem">
+        SELECT * from t_orderitem WHERE o_id=#{oId};
+    </select>
+
+    <select id="getOrderById" parameterType="int" resultType="order">
+        SELECT * from t_order WHERE o_id=#{oId};
+    </select>
+
+    <update id="updateOneOrder" parameterType="order">
+        update t_order set phone = #{phone},oStatus = #{oStatus},
+        createTime = #{createTime},address = #{address},money = #{money},payMethod=#{payMethod} where o_id=#{o_id};
+    </update>
+
+    <select id="getOrderBySearchMap" parameterType="orderSearchMap" resultType="order">
+        SELECT * from t_order WHERE 1=1
+        <if test="oStatus!=null and oStatus!=-1">
+            AND oStatus = #{oStatus}
+        </if>
+        <if test="payMethod!=null and payMethod!=-1">
+            AND payMethod = #{payMethod}
+        </if>
+        <if test="oId!=null">
+            AND  o_id=#{oId}
+        </if>
+        <if test="uId!=null">
+            AND  u_id=#{uId}
+        </if>
+        <if test="startIndex!=null">
+            limit #{startIndex},10
+        </if>
+
+
+    </select>
+</mapper>

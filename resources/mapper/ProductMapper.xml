@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lv.dao.ProductDao">
+
+    <select id="getEightProduct" parameterType="String" resultType="product">
+    SELECT p.* from t_product p,t_category c WHERE p.c_id=c.c_id and c.cName=#{cName} LIMIT 8;
+
+</select>
+
+    <select id="findProductById" parameterType="int" resultType="product">
+        SELECT * from t_product WHERE p_id=#{pId};
+    </select>
+
+    <select id="findProductByCategoryId" resultType="product">
+
+        SELECT * from t_product WHERE c_id=#{cId}
+
+        <if test="orderBy!=null and orderBy!=''">
+            ORDER BY ${orderBy}
+        </if>
+
+        LIMIT #{StartIndex},20;
+
+    </select>
+
+
+    <select id="getTotalForCategory" parameterType="int" resultType="int">
+        SELECT count(1) FROM t_product WHERE c_id=#{cId}
+    </select>
+
+    <select id="getCategoryName" parameterType="int" resultType="category">
+        select * from t_category WHERE c_id=#{cId};
+    </select>
+
+
+    <select id="getProductByOrderByPrice" resultType="product" parameterType="int">
+        SELECT * from t_product WHERE c_id=#{cId} ORDER BY price LIMIT 0,20;
+    </select>
+
+
+    <select id="findProductByKeyword" resultType="product">
+        SELECT * from t_product WHERE 1=1
+        <if test="keyword!=null">
+            AND pName like "%"#{keyword}"%"
+        </if>
+        <if test="cId!=null">
+            AND c_id =#{cId}
+        </if>
+        <if test="orderBy!=null and orderBy!=''">
+            ORDER BY ${orderBy}
+        </if>
+        <if test="StartIndex!=null">
+            LIMIT #{StartIndex},20;
+        </if>
+    </select>
+
+
+    <select id="getTotalForSearch" resultType="int">
+        SELECT count(*) from t_product WHERE 1=1
+        <if test="keyword!=null">
+            AND pName like "%"#{keyword}"%"
+        </if>
+        <if test="cId!=null">
+            AND c_id =#{cId}
+        </if>
+    </select>
+
+
+    <select id="getProductForPage" parameterType="int" resultType="product">
+        SELECT * from t_product LIMIT #{startIndex},10;
+    </select>
+
+
+    <select id="getToalCountProduct" resultType="int">
+        SELECT count(*) from t_product ;
+    </select>
+
+    <select id="getProductByName" resultType="product">
+        SELECT * from t_product WHERE 1=1
+        <if test="pName!=null">
+            AND pName like "%"#{pName}"%"
+        </if>
+        <if test="startIndex!=null">
+            LIMIT #{startIndex},10;
+        </if>
+    </select>
+
+    <insert id="insertOneProduct" parameterType="product">
+        INSERT INTO t_product (pName,price,pDesc,pColor,pSpeci,pImg,c_id)  VALUES
+	(
+		#{pName},
+		#{price},
+		#{pDesc},
+		#{pColor},
+		#{pSpeci},
+		#{pImg},
+		#{c_id}
+	);
+
+    </insert>
+
+    <update id="updateOneProduct" parameterType="product">
+        update t_product
+        set pName=#{pName},price=#{price},pDesc=#{pDesc},pColor=#{pColor},pSpeci=#{pSpeci},pImg=#{pImg},c_id=#{c_id}
+        WHERE  p_id=#{p_id}
+    </update>
+</mapper>
+
+

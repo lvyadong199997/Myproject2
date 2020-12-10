@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.lv.dao.CategoryDao">
+    <select id="getAllCategory" resultType="Category">
+    SELECT * FROM  t_category
+
+</select>
+
+    <select id="getCategoryForPage" parameterType="int" resultType="category">
+        SELECT * from t_category
+        <if test="startIndex!=null">
+            LIMIT #{startIndex},10;
+        </if>
+    </select>
+
+    <select id="getCategoryByName" resultType="category">
+        SELECT * from t_category WHERE 1=1
+        <if test="cName!=null">
+            AND cName like "%"#{cName}"%"
+        </if>
+        <if test="startIndex!=null">
+            LIMIT #{startIndex},10;
+        </if>
+    </select>
+
+    <select id="getCategoryById" parameterType="int" resultType="category">
+        SELECT * from t_category WHERE c_id=#{cId};
+    </select>
+
+    <insert id="insertOneCategory">
+        INSERT  into t_category(cName) VALUES(#{cName})
+    </insert>
+
+    <update id="updateOneCategory">
+        update t_category  set cName =#{cName}  where c_id=#{c_id}
+    </update>
+</mapper>

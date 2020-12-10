@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--持久层配置开始-->
+
+    <!--引入数据库的外部属性文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+    <!--创建数据源对象  spring自带的数据源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--创建sqlSessionFactory对象          SqlSessionFactoryBean该类由Mybatis和Spring整合包提供  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据源对象-->
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="typeAliasesPackage" value="com.lv.pojo"></property>
+        <!-- sql映射文件路径 -->
+        <property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"></property>
+
+    </bean>
+    <!--扫描dao接口的包 创建动态代理对象 需要sqlSessionFactory对象-->
+    <!--扫描dao层接口的包， 创建动态代理对象, 存入到spring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
+        <!--需要指定dao接口的包名-->
+        <property name="basePackage" value="com.lv.dao"></property>
+
+    </bean>
+    <!--持久层配置结束-->
+    <!--***********************************************************************************-->
+    <!--业务层配置开始-->
+    <!--扫描包 创建所有业务层对象-->
+    <context:component-scan base-package="com.lv.service"></context:component-scan>
+    <!--声明式事务-->
+    <!--1 事务管理类对象-->
+    <bean id="transactionManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--2 事务增强对象-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManage">
+        <tx:attributes>
+            <!--该类方法设置只读的事务 如果有事务,加入事务执行,如果没有,非事务执行-->
+            <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="query*" read-only="true" propagation="SUPPORTS"/>
+            <!--该类的其它方法 非只读事务 如果没有事务,创建一个事务,如果有事务,加入事务-->
+            <tx:method name="*" read-only="false" propagation="REQUIRED"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+    <!--3 aop设置切面配置-->
+    <aop:config>
+        <!--设置切入点 事务增强  切面配置-->
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.lv.service.impl.*.*(..))"></aop:advisor>
+    </aop:config>
+    <!--业务层配置结束-->
+
+</beans>

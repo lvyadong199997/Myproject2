@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mapper映射文件   测试使用-->
+
+
+<mapper namespace="com.lv.dao.UserDao">
+    <select id="findUser" resultType="user">
+        SELECT * FROM  t_user WHERE username=#{username} and password=#{password};
+    </select>
+
+    <insert id="saveUser" parameterType="user">
+        insert into t_user(username,password,phoneNum,email,registerTime) values (#{username},#{password},#{phoneNum},#{email},#{registerTime});
+    </insert>
+
+    <select id="findUniqueUsername" parameterType="string" resultType="user">
+
+         SELECT * FROM  t_user WHERE username=#{username};
+
+    </select>
+
+    <select id="getUserForPage" parameterType="int" resultType="user">
+        SELECT * from t_user
+        <if test="startIndex!=null">
+            LIMIT #{startIndex},10;
+        </if>
+    </select>
+
+    <select id="getUserById" parameterType="int" resultType="user">
+        SELECT * from t_user WHERE u_id=#{uId};
+    </select>
+
+    <select id="getUserByName" resultType="user">
+        SELECT * from t_user WHERE 1=1
+        <if test="uName!=null">
+            AND username like "%"#{uName}"%"
+        </if>
+        <if test="startIndex!=null">
+            LIMIT #{startIndex},10;
+        </if>
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE t_user set
+        phoneNum=#{phoneNum},username=#{username},
+        password=#{password},email=#{email}
+        WHERE u_id=#{u_id}
+    </update>
+
+    <insert id="insertUser" parameterType="user">
+    insert into t_user(username,password,phoneNum,email,registerTime)
+    values (#{username},#{password},#{phoneNum},#{email},#{registerTime});
+    </insert>
+</mapper>
