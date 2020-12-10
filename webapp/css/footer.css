@@ -1,0 +1,62 @@
+.footer {
+    margin-top: 65px;
+    /* max-width: 1520px; */
+    /* width: 1520px; */
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+}
+
+.footer a {
+    color: black;
+}
+
+.footer .font_desc span {
+    display: block;
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.font_desc2 {
+    position: relative;
+}
+
+.font_desc3 {
+    float: left;
+}
+
+.font_desc4 {
+    float: left;
+    margin-left: 40px;
+}
+
+.footer .font_desc3 li,
+.font_desc4 li {
+    padding: 6px 0;
+}
+
+.info {
+    margin-right: 480px;
+    margin-top: 20px;
+}
+
+.info p {
+    /* width: 200px; */
+    height: 30px;
+    text-align: center;
+}
+
+.font_desc a:hover {
+    color: coral;
+}
+
+.position img {
+    display: block;
+}
+
+.position {
+    position: absolute;
+    top: 0;
+    right: 80px;
+}

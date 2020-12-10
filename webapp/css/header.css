@@ -1,0 +1,98 @@
+/* 头部开始 */
+
+.header {
+    max-width: 100%;
+    /* width: 1520px; */
+    height: 30px;
+    background-color: #333;
+    /* background-color: pink; */
+}
+
+.header a {
+    color: #fff;
+}
+
+.container {
+    margin-top: 6px;
+    float: left;
+    /* margin-left: 180px; */
+}
+
+.container a {
+    /* color: #FFF; */
+    font-size: 14px;
+    padding: 0 10px;
+    /* float: left; */
+}
+
+.container a:hover,
+.bar a:hover {
+    color: #ff6700;
+}
+
+.bar {
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.bar a {
+    padding: 0 20px;
+}
+
+
+/* 头部结束 */
+
+
+/* 搜索开始 */
+
+.nav {
+    /* height: 100px; */
+    /* background-color: pink; */
+    position: relative;
+}
+
+.logo a {
+    float: left;
+    margin-top: 22px;
+    margin-left: 20px;
+    display: inline-block;
+    width: 49px;
+    height: 49px;
+    background-image: url(../images/b.png);
+}
+
+.search,
+.searchbut {
+    position: absolute;
+}
+
+.search {
+    top: 36px;
+    right: 370px;
+    line-height: 34px;
+}
+
+.searchbut {
+    top: 36px;
+    right: 310px;
+}
+
+.searchbut input {
+    font-size: 14px;
+    border: 0;
+    outline: none;
+    width: 60px;
+    height: 35px;
+    cursor: pointer;
+    /* background: ; */
+}
+
+.search input {
+    width: 425px;
+    height: 26px;
+    padding: 2px 10px;
+    /* border-top: none; */
+}
+
+
+/* 搜索结束 */

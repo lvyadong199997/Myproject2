@@ -1,0 +1,160 @@
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+.cart {
+    /* width: 100px; */
+    /* height: 400px; */
+    /* background-color: pink; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cart .cartlist {
+    /* height: 300px; */
+    /* background-color: skyblue; */
+}
+
+.cartlist .list_top {
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.list_top .col {
+    /* line-height: 76px; */
+    float: left;
+    font-size: 16px;
+    height: 71px;
+    line-height: 71px;
+    /*padding: 24px 78px;*/
+}
+
+.list_top .price_one {
+    padding: 24px 0;
+    margin-left: 20px;
+}
+
+.cartlist .list_bottom {
+    height: 220px;
+    /* background-color: chocolate; */
+    /* margin-top: 15px; */
+}
+
+
+/* .cartlist .list_bottom .col2 div {
+padding: 0;
+} */
+
+.cart .submit {
+    /* height: 100px; */
+    /* background-color: burlywood; */
+}
+
+.list_bottom .col2 {
+    position: relative;
+    float: left;
+    margin-left: 112px;
+    overflow: hidden;
+}
+
+.col2 .add {
+    position: absolute;
+    top: -8px;
+    left: 41px;
+}
+
+.col2 .sub {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.list_bottom .list_top {
+    height: 124px;
+    line-height: 124px;
+}
+
+.list_bottom .spe {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 350px;
+    height: 100px;
+    margin-left: 113px;
+}
+
+.spe span {
+    display: block;
+    float: left;
+    width: 200px;
+    height: 40px;
+}
+
+.list_bottom .spe img {
+    vertical-align: middle;
+}
+
+.list_bottom .p_price {
+    margin-left: 74px;
+}
+
+.list_bottom input.optiton {
+    height: 29px;
+    padding: 2px;
+    width: 27px;
+}
+
+.cart a {
+    color: black;
+}
+
+.cart a:hover {
+    color: #ff6700;
+}
+
+.cart .submit {
+    margin-top: 20px;
+    height: 50px;
+    background-color: #fff;
+}
+
+.submit .sub_left p {
+    width: 275px;
+    height: 48px;
+    /* background-color: pink; */
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+.submit .sub_right a {
+    font-size: 18px;
+    display: block;
+    width: 200px;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 auto;
+    background-color: #b0b0b0;
+    text-align: center;
+    transition: all .4s;
+    /* align-content: center; */
+}
+
+.submit .sub_right a:hover {
+    background-color: #ff6700;
+    color: #fff;
+}
+
+.submit .money {
+    font-size: 16px;
+    margin-right: 10px;
+    height: 48px;
+    line-height: 48px;
+    /* background-color: pink; */
+}
+
+.submit .money .red {
+    color: #ff6700;
+    font-size: 30px;
+}

@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* 使用字体图标 开始*/
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('../font/iconfont.eot');
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), url('../font/iconfont.woff2') format('woff2'), url('../font/iconfont.woff') format('woff'), url('../font/iconfont.ttf') format('truetype'), url('../font/iconfont.svg#iconfont') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* 使用字体图标 结束*/
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+input {
+    outline: none;
+}
+
+body {
+    font-family: Helvetica, arial, "MI Lan Pro", "Hiragino Sans GB", "PingFang SC", "Microsoft YaHei", "微軟正黑體", "儷黑 Pro", sans-serif;
+    font-size: 14px;
+}
+
+.clearfix::after {
+    display: block;
+    content: "";
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+li {
+    list-style: none;
+}
+
+.searchbut span {
+    line-height: 34px;
+    text-align: center;
+    width: 34px;
+    height: 33px;
+    /* border: 1px solid #ccc; */
+    position: absolute;
+    top: 0px;
+    left: -96px;
+    display: inline-block;
+    font-size: 20px;
+}

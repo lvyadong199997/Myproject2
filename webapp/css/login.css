@@ -1,0 +1,125 @@
+.header {
+    /* background-color: pink; */
+    /* height: 500px; */
+}
+
+body {
+    background-color: rgb(249, 249, 249);
+}
+
+.logo {
+    font-size: 28px;
+}
+
+.logo a {
+    width: 200px;
+    height: 98px;
+    display: block;
+    background-image: url(../images/logo.png)
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    background-image: url("../images/a.jpg");
+    height: 600px;
+    background-position: top center;
+}
+
+.login_input {
+    width: 410px;
+    height: 540px;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 10px;
+    right: 139px;
+}
+
+.nav_tab {
+    width: 400px;
+    height: 100px;
+    /* background-color: aquamarine; */
+    overflow: hidden;
+}
+
+.nav_tab a {
+    display: block;
+    margin: 0 auto;
+    margin-top: 33px;
+    width: 90px;
+    color: #f56600;
+    /* height: 100px; */
+    /* background-color: #ccc; */
+    font-size: 20px;
+}
+
+.username {
+    margin-left: 44px;
+    position: relative;
+}
+
+.password {
+    margin-top: 20px;
+    margin-left: 44px;
+    position: relative;
+}
+
+.username input {
+    padding: 10px;
+    padding-left: 20px;
+    width: 300px;
+    height: 20px;
+}
+
+.password input {
+    padding: 10px;
+    padding-left: 20px;
+    width: 300px;
+    height: 20px;
+}
+
+.btn input {
+    border: none;
+    display: block;
+    background-color: #ff6700;
+    width: 329px;
+    height: 50px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 44px;
+    margin-top: 20px;
+}
+
+.reverse {
+    /* width: 329px; */
+    /* height: 100px; */
+    /* background-color: #f56600; */
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+.reverse a:hover {
+    color: #f56600;
+}
+
+.username {
+    font-size: 18px;
+}
+
+.username span {
+    /* font-size: 20px; */
+    position: absolute;
+    top: 13px;
+    left: 4px;
+}
+
+.password span {
+    position: absolute;
+    top: 13px;
+    left: 4px;
+}
+
+.login_input input {
+    font-size: 17px;
+}
